@@ -13,7 +13,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;    
+    box-sizing: border-box;
 }
 
 html {
@@ -27,7 +27,7 @@ html {
     /* margin: 30px - Espaçamento de 30 px em torno do elemento*/
     /* margin: 0px 30px - Espaçamento 0px vertical e 30px horizontal*/
     /* margin: 0px 30px 10px - Espaçamento 0px para cima, 30px horizontal e 10 para baixo*/
-    
+
     /* margin: 0px 30px 10px 20px- 
     Espaçamento 0px para cima, 30px para direita e 10 para baixo e 20 para esquerda*/
     margin: 0 auto;
@@ -51,7 +51,7 @@ header {
 header div.container-grid {
     /* Porcentagem - Unidade relativa ao elemento pai */
     height: 100%;
-    
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -242,7 +242,7 @@ h2 {
 
 #portfolio a {
     width: fit-content;
-    
+
     font-family: "Anta";
     font-size: 28px;
 
@@ -347,7 +347,8 @@ h2 {
     resize: none;
 }
 
-.campo input:focus, .campo-textarea textarea:focus {
+.campo input:focus,
+.campo-textarea textarea:focus {
     outline: 2px solid var(--laranja-gamifica);
 }
 
@@ -369,32 +370,32 @@ h2 {
     cursor: pointer;
 
     text-transform: uppercase;
-    
-    transition: background-color 500ms ease ;
+
+    transition: background-color 500ms ease;
 }
 
 #contato form button:hover {
     background-color: #ad4929;
 }
 
-footer{
-   height: 290px;
-    
+footer {
+    height: 290px;
+
     background-color: var(--roxo-gamifica);
 }
 
-footer .container-grid{
-     height: 100%;
+footer .container-grid {
+    height: 100%;
 
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.redes-sociais{
-   height: 50%;
-   
-   
+.redes-sociais {
+    height: 50%;
+
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -409,7 +410,7 @@ footer .container-grid{
 
 }
 
-.icones-redes{
+.icones-redes {
     width: 240px;
 
     display: flex;
@@ -421,5 +422,5 @@ footer .container-grid{
 }
 
 .icones-redes a:hover {
-color: var(--laranja-gamifica);
+    color: var(--laranja-gamifica);
 }
