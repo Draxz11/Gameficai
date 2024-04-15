@@ -99,6 +99,35 @@ header img {
     font-family: "Anta";
     font-size: 32px;
 }
+    .conteudo-banner.span{
+        border-right: 6px solid var(--laranja-gamifica)
+
+        animation:    
+        digitando 2s steps{40,end},
+        cursor 0.75s step-end infinite 
+        ;
+    }
+
+    @keyframes digitando {
+        form{
+            width: 0
+        }
+
+        to{
+            width: 100%;
+        }
+    }
+
+    @keyframes cursor{
+        form,
+        to {
+            border-color: transparent;
+        }
+
+        50%{
+            border-color: var(--laranja-gamifica);
+        }
+    }
 
 #sobre {
     height: 800px;
