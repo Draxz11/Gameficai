@@ -80,6 +80,12 @@ const mostrarSlideAnterior = () => {
     //    Remove slide anterior
     banner.classList.remove(slides[slideAtual])
 
+    if(slideAtual > 0) {
+        slideAtual--
+    } else {
+        slideAtual = numeroSlides - 1
+    }
+
     slideAtual--
 
     // Renderiza o slideAtual

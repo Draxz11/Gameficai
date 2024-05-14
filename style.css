@@ -77,6 +77,32 @@ html {
     fill: #ffffff76;
 }
 
+.botoes {
+    width: 150px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: absolute;
+    bottom: 4%;
+
+    left: 50%;
+    margin-left: -75px;
+}
+
+.botoes button {
+    width: 30px;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.botoes button svg {
+    fill: #ffffff76;
+}
+
 header {
     height: 165px;
 
