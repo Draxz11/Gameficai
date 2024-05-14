@@ -35,3 +35,54 @@ window.onresize = () => {
     iconeX.style.display = "inline"
     iconeBarras.style.display = "none"
 }
+
+// Função Carroussel
+
+let slides = [ 
+    'primeiro-banner',
+    'segundo-banner',
+    'terceiro-banner'
+]
+
+let slideAtual = 0
+
+let numeroSlides = slides.length
+
+let banner = document.querySelector(".banner")
+
+banner.classList.add(slides[slideAtual])
+
+const mostrarProximoSlide = () => {
+//    Remove slide anterior
+    banner.classList.remove(slides[slideAtual])
+
+    // numeroSlides = 3
+    // numeroSlides - 1 -> 2
+    // estou no ultimo? 2
+
+    // [0,1,2]
+
+if(slideAtual < (numeroSlides - 1)) {
+    slideAtual++
+} else {
+    slideAtual = 0
+}
+
+// Muda a posição das listas de slides
+    slideAtual++
+
+// Renderiza o slideAtual
+    banner.classList.add(slides[slideAtual])
+
+}
+
+const mostrarSlideAnterior = () => {
+    //    Remove slide anterior
+    banner.classList.remove(slides[slideAtual])
+
+    slideAtual--
+
+    // Renderiza o slideAtual
+    banner.classList.add(slides[slideAtual])
+
+}
