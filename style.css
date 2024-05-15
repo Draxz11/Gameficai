@@ -43,7 +43,7 @@ html {
 }
 
 .primeiro-banner {
-    background-image: linear-gradient(90deg, rgba(53, 24, 104, 1) 0%, rgba(53, 24, 104, 0.8) 100%), url(img/bg-room.png);
+    background-image: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgba(53, 24, 104, 0.8) 100%), url(img/bg-room.png);
 }
 
 .segundo-banner {

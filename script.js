@@ -1,33 +1,21 @@
-// let menu = document.querySelector("#menu")
-
 let menu = document.getElementById("menu")
 let iconeBarras = document.getElementById("icone-barras")
-let iconeX = document.querySelector("#icone-x")
+let iconeX = document.getElementById("icone-x")
 
 function abrirFecharMenu() {
-
-    // Se o menu está fechado:
-    if (menu.classList.contains("menu-fechado")) {
-        // Abrir o menu
+    if(menu.classList.contains("menu-fechado")) {
         menu.classList.remove("menu-fechado")
 
-        // Mostrar icone X
         iconeX.style.display = "inline"
 
-        // Esconder icone barras
         iconeBarras.style.display = "none"
-
-    } else {
-        // Fechar o menu
+    }else {
         menu.classList.add("menu-fechado")
 
-         // Mostrar icone X
-         iconeX.style.display = "none"
+        iconeX.style.display = "none"
 
-         // Esconder icone barras
-         iconeBarras.style.display = "inline"
+        iconeBarras.style.display = "inline"
     }
-
 }
 
 window.onresize = () => {
@@ -36,9 +24,9 @@ window.onresize = () => {
     iconeBarras.style.display = "none"
 }
 
-// Função Carroussel
+// Função Carrosel 
 
-let slides = [ 
+let slides = [
     'primeiro-banner',
     'segundo-banner',
     'terceiro-banner'
@@ -46,49 +34,103 @@ let slides = [
 
 let slideAtual = 0
 
-let numeroSlides = slides.length
+let numerSlides = slides.length
 
 let banner = document.querySelector(".banner")
 
 banner.classList.add(slides[slideAtual])
 
 const mostrarProximoSlide = () => {
-//    Remove slide anterior
+    //Remove slide anterior
     banner.classList.remove(slides[slideAtual])
 
-    // numeroSlides = 3
-    // numeroSlides - 1 -> 2
-    // estou no ultimo? 2
+    // numrSlides = 3
+    // numrSlides = 1 -> 2
+    // estou no último? 2
 
-    // [0,1,2]
+    // [0, 1, 2]
 
-if(slideAtual < (numeroSlides - 1)) {
-    slideAtual++
-} else {
-    slideAtual = 0
-}
+    if(slideAtual < (numerSlides - 1)) {
+        slideAtual++
+    } else {
+        slideAtual = 0
+    }
 
-// Muda a posição das listas de slides
-    slideAtual++
-
-// Renderiza o slideAtual
+    //Renderiza o slideAtual
     banner.classList.add(slides[slideAtual])
-
 }
 
 const mostrarSlideAnterior = () => {
-    //    Remove slide anterior
+    //Remove slide anterior
     banner.classList.remove(slides[slideAtual])
 
-    if(slideAtual > 0) {
+    if(slideAtual > 0){
         slideAtual--
     } else {
-        slideAtual = numeroSlides - 1
+        slideAtual = numerSlides - 1
     }
 
-    slideAtual--
-
-    // Renderiza o slideAtual
+    //Renderiza o slideAtual
     banner.classList.add(slides[slideAtual])
-
 }
+
+const selecionarSlide = (indiceSlide) => {
+    slides.forEach( slide => banner.classList.remove(slide))
+
+    slideAtual = indiceSlide
+
+    banner.classList.add(slides[indiceSlide])
+}
+
+let listaCases = [
+    {
+        imagem: "https://unsplash.it/600/400?image=54",
+        descricao: "Uma empresa de tecnologia lança um desafioo de gamificação onde os funcionarios devem propor e implementar ideias inovadoras.",
+        link: "",
+        idproduto: ""
+    },
+
+    {
+        imagem: "https://unsplash.it/600/400?image=20",
+        descricao: "Uma empresa de consultoria cria uma narrativa interativa de gamificação para oseu programa de treinamento.",
+        link: "",
+        idproduto: ""
+    },
+    
+    {
+        imagem: "https://unsplash.it/600/400?image=17",
+        descricao: "Uma empresa de vendas implementa uma competição gamificada entre equipes que complementem que competem pelo topo do ranking.",
+        link: "",
+        idproduto: ""
+    },
+
+    {
+        imagem: "https://unsplash.it/600/400?image=26",
+        descricao: "Uma empresa de saúde promove o bem-estar dos funcionários através de um desafio da gamificação de condicionamento físico.",
+        link: "",
+        idproduto: ""
+    },
+]
+
+const renderizarCases =() => {
+    let elementoLista = document.getElementById("lista-cards")
+
+    // template Strings
+    let template = ""
+
+    listaCases.forEach( cardCase => {
+        // template++ ou template +=1 ambos são iguais
+        // SRC é para imagem e P é para descrição só trocar do html para o js colocar dentro da crase ${e aqui dentro colocar a descrição ou a imagem }
+            template += ` <div class="card">
+            <img src="${cardCase.imagem}" alt="">
+            <p>${cardCase.descricao}</p>
+            <button>Ver mais</button>
+        </div>`
+    } )
+
+    elementoLista.innerHTML = template
+}
+
+
+
+
