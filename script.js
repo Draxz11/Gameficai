@@ -1,19 +1,30 @@
+
+// let menu = document.querySelector("#menu")
 let menu = document.getElementById("menu")
 let iconeBarras = document.getElementById("icone-barras")
-let iconeX = document.getElementById("icone-x")
+let iconeX = document.querySelector("#icone-x")
 
 function abrirFecharMenu() {
-    if(menu.classList.contains("menu-fechado")) {
+
+    // Se o menu está fechado
+    if (menu.classList.contains("menu-fechado")) {
+        // Abrir o menu
         menu.classList.remove("menu-fechado")
 
+        // Mostrar icone X
         iconeX.style.display = "inline"
 
+        // Esconder icone Barras
         iconeBarras.style.display = "none"
-    }else {
+
+    } else {
+        // Fechar o menu
         menu.classList.add("menu-fechado")
 
+        // Esconder icone X
         iconeX.style.display = "none"
 
+        // Mostrar icone Barras
         iconeBarras.style.display = "inline"
     }
 }
@@ -24,113 +35,132 @@ window.onresize = () => {
     iconeBarras.style.display = "none"
 }
 
-// Função Carrosel 
+
+// Função Carrosel
 
 let slides = [
     'primeiro-banner',
-    'segundo-banner',
+    "segundo-banner",
     'terceiro-banner'
 ]
 
+
 let slideAtual = 0
 
-let numerSlides = slides.length
+let numeroSlides = slides.length
 
 let banner = document.querySelector(".banner")
 
 banner.classList.add(slides[slideAtual])
 
 const mostrarProximoSlide = () => {
-    //Remove slide anterior
+    // Remove slide anterior
     banner.classList.remove(slides[slideAtual])
 
-    // numrSlides = 3
-    // numrSlides = 1 -> 2
-    // estou no último? 2
+    // numeroSlides = 3
+    // numeroSlides - 1 -> 2
+    // estou no ultimo? 2
 
     // [0, 1, 2]
 
-    if(slideAtual < (numerSlides - 1)) {
+    if (slideAtual < (numeroSlides - 1)) {
         slideAtual++
     } else {
         slideAtual = 0
     }
 
-    //Renderiza o slideAtual
+    // Renderiza o slideAtual
     banner.classList.add(slides[slideAtual])
 }
 
 const mostrarSlideAnterior = () => {
-    //Remove slide anterior
+    // Remove slide anterior
+
+    // numeroSlides = 3
+    // numeroSlides - 1 -> 2
+
+    // [0, 1, 2]
+
     banner.classList.remove(slides[slideAtual])
 
-    if(slideAtual > 0){
+    if (slideAtual > 0) {
         slideAtual--
     } else {
-        slideAtual = numerSlides - 1
+        slideAtual = numeroSlides - 1
     }
 
-    //Renderiza o slideAtual
+
+    // Renderiza o slideAtual
     banner.classList.add(slides[slideAtual])
 }
 
 const selecionarSlide = (indiceSlide) => {
-    slides.forEach( slide => banner.classList.remove(slide))
+    slides.forEach(slide => banner.classList.remove(slide))
 
     slideAtual = indiceSlide
 
     banner.classList.add(slides[indiceSlide])
 }
 
-let listaCases = [
-    {
-        imagem: "https://unsplash.it/600/400?image=54",
-        descricao: "Uma empresa de tecnologia lança um desafioo de gamificação onde os funcionarios devem propor e implementar ideias inovadoras.",
-        link: "",
-        idproduto: ""
-    },
+let listaCases = []
 
-    {
-        imagem: "https://unsplash.it/600/400?image=20",
-        descricao: "Uma empresa de consultoria cria uma narrativa interativa de gamificação para oseu programa de treinamento.",
-        link: "",
-        idproduto: ""
-    },
-    
-    {
-        imagem: "https://unsplash.it/600/400?image=17",
-        descricao: "Uma empresa de vendas implementa uma competição gamificada entre equipes que complementem que competem pelo topo do ranking.",
-        link: "",
-        idproduto: ""
-    },
-
-    {
-        imagem: "https://unsplash.it/600/400?image=26",
-        descricao: "Uma empresa de saúde promove o bem-estar dos funcionários através de um desafio da gamificação de condicionamento físico.",
-        link: "",
-        idproduto: ""
-    },
-]
-
-const renderizarCases =() => {
+const renderizarCases = () => {
     let elementoLista = document.getElementById("lista-cards")
 
-    // template Strings
-    let template = ""
+    // Template Strings
 
     listaCases.forEach( cardCase => {
-        // template++ ou template +=1 ambos são iguais
-        // SRC é para imagem e P é para descrição só trocar do html para o js colocar dentro da crase ${e aqui dentro colocar a descrição ou a imagem }
-            template += ` <div class="card">
+        template += `<div class="card">
             <img src="${cardCase.imagem}" alt="">
             <p>${cardCase.descricao}</p>
             <button>Ver mais</button>
-        </div>`
-    } )
+        </div>` 
+    })
 
     elementoLista.innerHTML = template
 }
 
+const carregarCases = () => {
+    // Método HTTP GET read -> Leitura
+    fetch("http://localhost:3000/cases")
+    .then( (resposta) => resposta.json() )
+    .then( (dados) => {
+        listaCases = dados
+        renderizarCases()
+    })
+    .catch( erro => console.error(erro))
+}
 
 
+const solicitarOrcamento = () => {
+    // Pegar valores dos inputs
+    let valorNome = document.getElementById("campo-nome").value
+    let valorEmail= document.getElementById("campo-email").value
+    let valorDescricao = document.getElementById("campo-descricao").value
 
+    console.log(valorNome);
+    console.log(valorEmail);
+    console.log(valorDescricao);
+    // Organizar objeto com os valores
+    let dadosForm = {
+        nome: valorNome,
+        email: valorEmail,
+        descricao: valorDescricao
+    }
+
+    // Enviar requisicao para a api
+    // 127.0.0.1 = localhost
+    // Método HTTP POST - Create -> Cadastrar ou criar
+    fetch("http://localhost:3000/solicitacoes", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dadosForm)
+    })
+    .then(resposta => resposta.json())
+    .catch(erro => console.error(erro))
+        // Limpar os campos
+        // Mostrar alert com msg de sucesso
+        // CASO ERRO - alert com msg erro
+}

@@ -1,5 +1,36 @@
 {
-    "cases": [
-        
-    ]
+  "cases": [
+    {
+      "imagem": "https://unsplash.it/600/400?image=54",
+      "descricao": "Uma empresa de tecnologia lança um desafioo de gamificação onde os funcionarios devem propor e implementar ideias inovadoras.",
+      "link": "",
+      "idproduto": ""
+    },
+    {
+      "imagem": "https://unsplash.it/600/400?image=20",
+      "descricao": "Uma empresa de consultoria cria uma narrativa interativa de gamificação para oseu programa de treinamento.",
+      "link": "",
+      "idproduto": ""
+    },
+    {
+      "imagem": "https://unsplash.it/600/400?image=17",
+      "descricao": "Uma empresa de vendas implementa uma competição gamificada entre equipes que complementem que competem pelo topo do ranking.",
+      "link": "",
+      "idproduto": ""
+    },
+    {
+      "imagem": "https://unsplash.it/600/400?image=26",
+      "descricao": "Uma empresa de saúde promove o bem-estar dos funcionários através de um desafio da gamificação de condicionamento físico.",
+      "link": "",
+      "idproduto": ""
+    }
+  ],
+  "solicitacoes": [
+    {
+      "id": "e9f9",
+      "nome": "Miguel",
+      "email": "miguelsinhoretiss@gmail.com",
+      "descricao": "Os alunos de jogos da tarde, são \"excelentes\""
+    }
+  ]
 }
