@@ -108,13 +108,14 @@ const renderizarCases = () => {
     let elementoLista = document.getElementById("lista-cards")
 
     // Template Strings
+    template = ""
 
-    listaCases.forEach( cardCase => {
+    listaCases.forEach(cardCase => {
         template += `<div class="card">
             <img src="${cardCase.imagem}" alt="">
             <p>${cardCase.descricao}</p>
             <button>Ver mais</button>
-        </div>` 
+        </div>`
     })
 
     elementoLista.innerHTML = template
@@ -123,19 +124,19 @@ const renderizarCases = () => {
 const carregarCases = () => {
     // Método HTTP GET read -> Leitura
     fetch("http://localhost:3000/cases")
-    .then( (resposta) => resposta.json() )
-    .then( (dados) => {
-        listaCases = dados
-        renderizarCases()
-    })
-    .catch( erro => console.error(erro))
+        .then((resposta) => resposta.json())
+        .then((dados) => {
+            listaCases = dados
+            renderizarCases()
+        })
+        .catch(erro => console.error(erro))
 }
 
 
-const solicitarOrcamento = () => {
+const solicitarOrcamento = (event) => {
     // Pegar valores dos inputs
     let valorNome = document.getElementById("campo-nome").value
-    let valorEmail= document.getElementById("campo-email").value
+    let valorEmail = document.getElementById("campo-email").value
     let valorDescricao = document.getElementById("campo-descricao").value
 
     console.log(valorNome);
@@ -158,9 +159,25 @@ const solicitarOrcamento = () => {
         },
         body: JSON.stringify(dadosForm)
     })
-    .then(resposta => resposta.json())
-    .catch(erro => console.error(erro))
-        // Limpar os campos
-        // Mostrar alert com msg de sucesso
-        // CASO ERRO - alert com msg erro
+        .then(resposta => {
+            console.log(resposta)
+
+            // Limpar os campos
+            document.querySelector("#contato form").reset()
+
+            // Mostrar alert com msg de sucesso
+            alert("Solicitação cadastrada")
+        })
+        .catch(erro => {
+            // CASO ERRO - alert com msg erro
+         console.error(erro)
+         alert("Erro na requisição")
+    })
+
+    event.preventDefault()
+
 }
+
+
+
+
