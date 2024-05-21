@@ -587,9 +587,7 @@ footer .container-grid {
 }
 
 @media screen and (max-width: 1080px) {
-    .container-cards {
-        flex-wrap: wrap;
-    }
+   
 
     .card {
         height: 400px;
@@ -659,9 +657,7 @@ footer .container-grid {
 }
 
 @media screen and (max-width: 520px) {
-    .container-grid {
-        width: 90%;
-    }
+   
 
     header img {
         width: 200px;
@@ -757,4 +753,8 @@ footer .container-grid {
     footer img {
         width: 200px;
     }
+}
+
+@media screen and (max-width: 375px) {
+    
 }
